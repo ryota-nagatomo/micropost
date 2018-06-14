@@ -111,7 +111,7 @@ class User extends Authenticatable
     public function unfavo($postId)
     {
         // confirming if already following
-        $exist = $this->is_following($postId);
+        $exist = $this->is_favoriting($postId);
 
 
         if ($exist) {
@@ -125,6 +125,12 @@ class User extends Authenticatable
     
     public function is_favoriting($postId) {
         return $this->favorites()->where('post_id', $postId)->exists();
+    }
+
+    public function feed_favorites()
+    {
+        $favorite_ids = $this->favorites()-> pluck('microposts.id')->toArray();
+        return Micropost::whereIn('id', $favorite_ids);
     }
 
 }
