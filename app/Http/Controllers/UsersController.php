@@ -133,7 +133,7 @@ class UsersController extends Controller
  public function favorites($id)
     {
         $user = User::find($id);
-        $favorites = $user->favorites()->paginate(10);
+        $favorites = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
 
         $data = [
             'user' => $user,
