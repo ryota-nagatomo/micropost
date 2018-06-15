@@ -103,8 +103,8 @@ class UsersController extends Controller
     public function followings($id)
     {
         $user = User::find($id);
-        $followings = $user->followings()->paginate(10);
-
+        $followings = $user->followings()->withPivot('created_at')->orderBy('user_follow.created_at', 'desc')->paginate(10);
+        //->withPivot('created_at')->orderBy('user_follow.created_at', 'desc') pivotで中間にアクセス　テーブルの指定は.でOK
         $data = [
             'user' => $user,
             'users' => $followings,
@@ -118,7 +118,7 @@ class UsersController extends Controller
     public function followers($id)
     {
         $user = User::find($id);
-        $followers = $user->followers()->paginate(10);
+        $followers = $user->followers()->withPivot('created_at')->orderBy('user_follow.created_at', 'desc')->paginate(10);
 
         $data = [
             'user' => $user,
@@ -133,7 +133,7 @@ class UsersController extends Controller
  public function favorites($id)
     {
         $user = User::find($id);
-        $favorites = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
+        $favorites = $user->favorites()->withPivot('created_at')->orderBy('micropost_user.created_at', 'desc')->paginate(10);
 
         $data = [
             'user' => $user,
