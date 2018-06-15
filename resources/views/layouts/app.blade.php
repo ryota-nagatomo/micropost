@@ -15,7 +15,7 @@
     <body>
         @include('commons.navbar')
 
-        <div class="container">
+        <div class="container" style="padding-top:70px;">
             @include('commons.error_messages')
 
             @yield('content')
