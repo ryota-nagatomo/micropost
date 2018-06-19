@@ -16,7 +16,7 @@
             </div>
         </aside>
         <div class='col-xs-8'>
-            <span class="glyphicon glyphicon-star"></span> {{$micropost->favorited()->count()}} by</a></span>
+            <span class="glyphicon glyphicon-heart-empty"></span> {{$micropost->favorited()->count()}} by</a></span>
             <br><br>
             @if (count($users) > 0)
                 @include('users.users', ['users' => $users])
