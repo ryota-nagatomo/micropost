@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\Micropost;
+
 class MicropostsController extends Controller
 {
  /**
@@ -53,6 +55,17 @@ class MicropostsController extends Controller
         }
 
         return redirect()->back();
+    }
+    public function show($id)
+    {
+        $micropost = Micropost::find($id);
+        $favoriteds = $micropost->favorited()->withPivot('created_at')->orderBy('micropost_user.created_at', 'desc')->paginate(10);
+        $data = [
+            'micropost' => $micropost,
+            'users' => $favoriteds,
+        ];
+
+        return view('microposts.show', $data);
     }
 
 }

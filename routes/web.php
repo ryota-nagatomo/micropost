@@ -37,5 +37,5 @@ Route::group(['middleware' => ['auth']], function () {
         //Route::get('followers', 'UsersController@followers')->name('users.followers'); 誰にfavoされてるかをあとで
     });
     
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy', 'show']]);
 });
