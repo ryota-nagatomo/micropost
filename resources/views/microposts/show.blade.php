@@ -15,7 +15,7 @@
                 </div>
             </div>
         </aside>
-        <div class='col-xs-4'>
+        <div class='col-xs-8'>
             <span class="glyphicon glyphicon-star"></span> {{$micropost->favorited()->count()}} by</a></span>
             <br><br>
             @if (count($users) > 0)
