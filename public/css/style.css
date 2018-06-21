@@ -1,0 +1,26 @@
+.btn-original{
+    background:none;
+    border:none
+}
+
+
+.btn-original.focus,.btn-original:focus{
+}
+
+
+.btn-original:hover{
+    font-weight: bolder;
+}
+
+.btn-original.active,.btn-original:active,.open>.dropdown-toggle.btn-original{
+}
+
+.btn-original.active.focus,.btn-original.active:focus,.btn-original.active:hover,.btn-original:active.focus,.btn-original:active:focus,.btn-original:active:hover,.open>.dropdown-toggle.btn-original.focus,.open>.dropdown-toggle.btn-original:focus,.open>.dropdown-toggle.btn-original:hover{
+}
+
+.btn-original.active,.btn-original:active,.open>.dropdown-toggle.btn-original{
+}
+
+.color-pink{
+    color:#FA58AC;
+}
