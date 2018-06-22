@@ -11,11 +11,6 @@
                 <img class="media-object img-circle img-responsive" src="{{ Gravatar::src($user->email, 500) }}" alt="">
                 </div>
             </div>
-                @if (Auth::user()->id == $user->id)
-                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('Withdrawal Resignation', ['class' => 'btn btn-danger btn-block']) !!}
-                {!! Form::close() !!}
-            @endif
             @include('user_follow.follow_button', ['user' => $user])
         </aside>
         <div class="col-xs-8">
