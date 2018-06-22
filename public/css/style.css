@@ -9,7 +9,8 @@
 
 
 .btn-original:hover{
-    font-weight: bolder;
+    filter:alpha(opacity=80);
+    opacity:0.7;
 }
 
 .btn-original.active,.btn-original:active,.open>.dropdown-toggle.btn-original{

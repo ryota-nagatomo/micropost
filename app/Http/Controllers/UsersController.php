@@ -97,7 +97,24 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // ユーザーを検索
+        $user = User::find($id);
+        if (!$user) {
+            // 手動でアクセスした場合はユーザーが見つからない可能性があるので、チェックをしておく
+            return Redirect::back()->withInput()->withErrors(['user_not_found' => trans('お探しのユーザーは存在しません')]);
+        }
+        else{
+            if(\Auth::user()->id === $user->id){
+                // ログインした本人だけが削除実行
+                $user->delete();
+                // 削除完了メッセージを添えて元のページに戻る
+                return view('welcome');
+            }
+            else{
+                return view('welcome');
+            }
+        }
+
     }
     
     public function followings($id)
