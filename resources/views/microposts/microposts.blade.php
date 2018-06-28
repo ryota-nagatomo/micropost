@@ -11,7 +11,7 @@
             </div>
             <div>
                 <p>{!! nl2br(e($micropost->content)) !!} </p>
-                <img src="{{ asset('storage/microposts/' . $micropost->file_name) }}" alt="" />
+                <img src="{{ asset('storage/micropost/' . $micropost->file_name) }}" alt="" />
             </div>
             <div class='btn-inline'>
                 <div class='btn-group'>
