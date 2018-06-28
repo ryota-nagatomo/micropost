@@ -35,15 +35,38 @@ class MicropostsController extends Controller
     }
     public function store(Request $request)
     {
+        if($request->file){
         $this->validate($request, [
             'content' => 'required|max:191',
-        ]);
-
-        $request->user()->microposts()->create([
+            'file' => 'image|max:3000',
+            ]);
+        
+            if ($request->file('file')->isValid([])) {
+                $filename = $request->file->store('public/micropost');
+                $request->user()->microposts()->create([
+                'content' => $request->content,
+                'file_name' => basename($filename),
+                ]);
+            }
+            else{
+                return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['file' => '不正なデータです。']);
+            }
+        }
+        else{
+            $this->validate($request, [
+            'content' => 'required|max:191',
+            ]);
+            
+            $request->user()->microposts()->create([
             'content' => $request->content,
-        ]);
-
+            ]);
+        }
+        
         return redirect('/');
+        
     }
     
     public function destroy($id)

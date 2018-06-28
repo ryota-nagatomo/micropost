@@ -10,7 +10,8 @@
                 {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $micropost->created_at }}</span>  <span class = "text-muted"><a href="{{ route('microposts.show', ['id' => $micropost->id]) }}"><span class="glyphicon glyphicon-heart-empty"></span> {{$micropost->favorited()->count()}}</a></span>
             </div>
             <div>
-                <p>{!! nl2br(e($micropost->content)) !!}</p>
+                <p>{!! nl2br(e($micropost->content)) !!} </p>
+                <img src="{{ asset('storage/microposts/' . $micropost->file_name) }}" alt="" />
             </div>
             <div class='btn-inline'>
                 <div class='btn-group'>
